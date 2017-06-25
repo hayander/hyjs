@@ -1,1 +1,8 @@
-console.log("Loaded HYJS");
+
+
+'use strict';
+
+var hy = require('./core/core.js');
+
+
+module.exports = hy;
