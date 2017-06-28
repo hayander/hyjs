@@ -4,7 +4,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-
   },
   "devDependencies": {
     "amdclean": "2.7.0",
