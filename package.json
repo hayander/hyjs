@@ -4,10 +4,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "brfs": "^1.4.3",
+    "derequire": "^2.0.6"
   },
   "devDependencies": {
     "amdclean": "2.7.0",
     "browserify": "14.4.0",
-    "grunt": "1.0.1"
+    "grunt": "1.0.1",
+    "grunt-contrib-uglify": "^3.0.1"
   }
 }

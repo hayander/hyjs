@@ -1,7 +1,7 @@
 'use strict';
 
 var hy = function () {
-    console.log("HY Loaded");
+    this.hyLoaded = true;
 }
 
 
