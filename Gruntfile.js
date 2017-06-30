@@ -23,8 +23,11 @@ module.exports = function (grunt) {
         },
     });
 
-    // Load task definitions
+    // Load local task definitions
     grunt.loadTasks('build/tasks');
+
+    // Load tasks from external libraries
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('build', ['browserify', 'uglify']);
 
