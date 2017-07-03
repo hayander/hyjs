@@ -66,7 +66,7 @@ module.exports = function (grunt) {
         mocha: {
             test: {
                 options: {
-                    urls: ['http://localhost:8888/test/test.html'],
+                    urls:[ 'http://localhost:8888/test/test.html'],
                     reporter: 'XUnit',
 
                     run: true,
