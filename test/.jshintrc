@@ -1,0 +1,26 @@
+{
+  "boss": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "immed": true,
+  "latedef": "nofunc",
+  "newcap": true,
+  "noarg": true,
+  "quotmark": "single",
+  "undef": true,
+  "unused": "vars",
+
+  "browser": true,
+  "globals": {
+    "suite": false,
+    "setup": false,
+    "teardown": false,
+    "test": false,
+    "assert": false,
+
+
+    "hy": false
+
+  }
+}
