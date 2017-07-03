@@ -66,20 +66,26 @@ module.exports = function (grunt) {
         mocha: {
             test: {
                 options: {
-                    urls: [
-                        'http://localhost:8888/test/test.html'
-                        //'http://localhost:8888/test/test.min.html',
-                    ],
+                    urls: ['http://localhost:8888/test/test.html'],
                     reporter: 'XUnit',
 
                     run: true,
                     log: true,
                     logErrors: true,
-                    // todo make mocha output to file
-
                     timeout: 5000
                 },
-                dest: 'build/logs/mocha.xml'
+                dest: 'build/logs/test.xml'
+            },
+            testmin: {
+                options: {
+                    urls: ['http://localhost:8888/test/test.min.html'],
+                    reporter: 'XUnit',
+                    run: true,
+                    log: true,
+                    logErrors: true,
+                    timeout: 5000
+                },
+                dest: 'build/logs/test.min.xml'
             }
         },
         plato: {
