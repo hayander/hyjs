@@ -8,7 +8,9 @@ var hy = function(debugLevel) {
         this.debugLevel = debugLevel;
     }
 
-    console.log('HYJS is initialising');
+    if ( this.debugLevel >= constants.DEBUG.INFO ) {
+        console.log('HYJS is initialising');
+    }
 
     this.hyLoaded = true;
 };
