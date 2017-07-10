@@ -8,4 +8,4 @@ module.exports = hy;
 
 console.log('test');
 
-hy();
+new hy();
