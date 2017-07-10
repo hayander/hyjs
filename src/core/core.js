@@ -2,9 +2,15 @@
 
 var constants = require('./constants');
 
-var hy = function () {
+var hy = function(debugLevel) {
+
+    if ( debugLevel ) {
+        this.debugLevel = debugLevel;
+    }
+
+    console.log('HYJS is initialising');
+
     this.hyLoaded = true;
-    console.log('C: ' + constants.HAYANDER);
 };
 
 
