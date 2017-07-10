@@ -4,7 +4,7 @@ var constants = require('./constants');
 
 var hy = function () {
     this.hyLoaded = true;
-    console.log("C: " + constants.HAYANDER);
+    console.log('C: ' + constants.HAYANDER);
 };
 
 

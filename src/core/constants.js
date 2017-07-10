@@ -6,4 +6,5 @@ module.exports = {
     HAYANDER: true
 
 
-}
+};
+
