@@ -110,12 +110,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-force-task');
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-plato');
 
 
     grunt.registerTask('build', ['browserify', 'uglify']);
-    grunt.registerTask('test', ['jshint', 'build', 'connect', 'mocha', 'plato']);
+    grunt.registerTask('test', ['force:jshint', 'build', 'connect', 'mocha', 'plato']);
     grunt.registerTask('default', ['test']);
 
 };
