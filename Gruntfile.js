@@ -100,6 +100,10 @@ module.exports = function (grunt) {
                 },
 
             }
+        },
+        watch: {
+            files: ['src/**/*.js'],
+            tasks: ['build']
         }
     });
 
@@ -110,6 +114,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-force-task');
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-plato');
