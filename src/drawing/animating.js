@@ -2,16 +2,16 @@
 
 var hy = require('../core/core');
 
-hy.Canvas.prototype.drawLoop   = function() {
+hy.Canvas.prototype.drawLoop = function() {
     if ( this.hy.drawLoop && typeof this.hy.drawLoop === 'function' ) {
 
-        this.hy.setAttribute('name','value');
+        this.hy._frameCount++;
+        var currentTime = new Date();
+        this.hy._frameRate  = 1000 / (currentTime - this.hy._lastFrameTime);
+        this.hy._lastFrameTime  = currentTime;
 
-        this.frameCount++;
 
-        var userspace = this.hy.getUserSpace();
-       // console.log(userspace);
-        this.hy.drawLoop.apply(userspace);
+        this.hy.drawLoop.apply(this);
         window.requestAnimationFrame(this.drawLoop.bind(this));
     } else {
         this.hy.log(this.DEBUG.ERROR, 'No draw loop defined');

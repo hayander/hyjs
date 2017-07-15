@@ -4,8 +4,6 @@
 var hy = require('./core/core');
 require('./core/constants');
 require('./core/logging');
-require('./core/userspace');
-
 
 
 // Rendering

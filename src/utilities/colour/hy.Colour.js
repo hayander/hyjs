@@ -17,7 +17,6 @@ hy.Colour = function(args) {
     if ( result === undefined ) {
         throw new Error('Unable to resolve colour');
     }
-  //  console.log(result);
 
     this.rgb = result.slice(0, result.length - 1).map(function(value) {
         return parseInt(value * 255, 10);
@@ -29,8 +28,6 @@ hy.Colour = function(args) {
         return args[key];
     });
 
-
-    console.log(this);
 };
 
 var colourRegex = {

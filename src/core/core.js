@@ -6,10 +6,8 @@ var hy = function(debugLevel) {
     this.setGlobalConstants();
 
     this.debugLevel = debugLevel !== undefined ? debugLevel : this.DEBUG.INFO;
-    this.framerate  = this.DEFAULT.FRAMERATE;
-    this.frameCount = 0;
-    this.Canvas     = {};
-    this.userSpace  = [];
+    this._targetFrameRate  = this.DEFAULT.FRAMERATE;
+    this._frameCount = 0;
 
     if ( document.readyState === 'complete' ) {
         this.initialise();
