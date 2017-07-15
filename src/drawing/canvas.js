@@ -53,4 +53,4 @@ hy.Canvas.prototype.resizeCanvas = function(canvas, width, height) {
 
 
 
-module.exports = hy;
+module.exports = hy.Canvas;

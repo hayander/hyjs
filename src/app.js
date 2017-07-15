@@ -16,8 +16,7 @@ require('./drawing/animating');
 
 
 // Utilities
-require('./utilities/color/color');
-require('./utilities/math/number_systems');
+require('./utilities/colour/hy.Colour');
 
 module.exports = hy;
 
