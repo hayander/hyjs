@@ -46,26 +46,27 @@ var colourRegex = {
 
 hy.Colour.prototype.resolveFormat = function(args) {
 
+    var result = null;
     if ( args.length === 1 && typeof(args[0]) === 'string' ) {
 
         var string = args[0].replace(/ /g, '');
 
 
         if ( colourRegex.HEX3.test(string) ) { // #RGB
-            var result = colourRegex.HEX3.exec(string).slice(1).map(function(colour) {
+            result = colourRegex.HEX3.exec(string).slice(1).map(function(colour) {
                 return parseInt(colour + colour, 16) / 255;
             });
 
         } else if ( colourRegex.HEX6.test(string) ) { // #RRGGBB
-            var result = colourRegex.HEX6.exec(string).slice(1).map(function(colour) {
+            result = colourRegex.HEX6.exec(string).slice(1).map(function(colour) {
                 return parseInt(colour, 16) / 255;
             });
         } else if ( colourRegex.RGB.test(string) ) { // rgb(r, g, b) AND rgb(r%, g%, b%)
             var index  = 0;
-            var result = colourRegex.RGB.exec(string).slice(1).map(function(colour) {
+            result = colourRegex.RGB.exec(string).slice(1).map(function(colour) {
                 if ( colour !== undefined ) {
                     index++;
-                    if ( index == 4 ) {
+                    if ( index === 4 ) {
                         return parseFloat(colour);
                     }
                     if ( colour[colour.length - 1] === '%' ) {
@@ -77,8 +78,8 @@ hy.Colour.prototype.resolveFormat = function(args) {
         }
 
         // Set to white if can't determine colour
-        if ( result === undefined ) {
-            result = [1, 1, 1, 1];
+        if ( result === null ) {
+            return [1, 1, 1, 1];
         }
 
         if ( result[3] === undefined ) {
