@@ -104,6 +104,18 @@ module.exports = function (grunt) {
         watch: {
             files: ['src/**/*.js'],
             tasks: ['build']
+        },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src : [
+                        'lib/hy.js'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                }
+            }
         }
     });
 
@@ -118,11 +130,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-force-task');
     grunt.loadNpmTasks('grunt-mocha');
     grunt.loadNpmTasks('grunt-plato');
+    grunt.loadNpmTasks('grunt-browser-sync');
+
 
 
     grunt.registerTask('build', ['browserify', 'uglify']);
     grunt.registerTask('test', ['force:jshint', 'build', 'connect', 'mocha', 'plato']);
     grunt.registerTask('default', ['test']);
+    grunt.registerTask('sync', ['browserSync', 'watch']);
 
 };
 
