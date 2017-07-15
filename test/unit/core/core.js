@@ -21,8 +21,8 @@ suite('Core', function() {
 
         var myhy = new hy();
 
-        test('isLoaded should be true', function () {
-            assert.ok(myhy.hyLoaded);
+        test('Canvas should be initialised', function () {
+            assert.ok(myhy.Canvas);
         });
     });
 });
