@@ -5,7 +5,6 @@ var hy = require('../core/core');
 hy.Canvas.prototype.background = function() {
     var colour = this.hy.colour(arguments);
 
-   // console.log(colour);
     var ctx   = this.canvas.getContext('2d');
 
     ctx.fillStyle = colour;

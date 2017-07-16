@@ -18,7 +18,7 @@ hy.Colour = function(args) {
         throw new Error('Unable to resolve colour');
     }
 
-    this.rgb = result.slice(0, result.length - 1).map(function(value) {
+    this.rgb = result.map(function(value) {
         return parseInt(value * 255, 10);
     });
 

@@ -6,7 +6,6 @@ var hy = require('../core/core');
 hy.Canvas = function(hyInstance, width, height) {
 
     this.hy = hyInstance;
-    this.hy.setInstanceConstants(this);
 
     this.canvas = this.createCanvas(width, height);
 
@@ -37,7 +36,7 @@ hy.Canvas.prototype.createCanvas = function(width, height) {
 
 hy.Canvas.prototype.resizeCanvas = function(canvas, width, height) {
     if ( !canvas ) {
-        this.log(this.DEBUG.ERROR, '[resizeCanvas] No canvas exists to resize');
+        throw('No canvas exists to resize');
     }
 
 

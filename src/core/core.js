@@ -1,18 +1,19 @@
 'use strict';
 
+var constants = require('./constants');
 
-var hy = function(debugLevel) {
+var hy = function(debug) {
 
-    this.setGlobalConstants();
+    this._c = constants;
 
-    this.debugLevel = debugLevel !== undefined ? debugLevel : this.DEBUG.INFO;
-    this._targetFrameRate  = this.DEFAULT.FRAMERATE;
+    this._debugging = debug !== undefined ? debug : false;
+    this._targetFrameRate  = this._c.DEFAULT.FRAMERATE;
     this._frameCount = 0;
 
     if ( document.readyState === 'complete' ) {
         this.initialise();
     } else {
-        this.log(this.DEBUG.VERBOSE, 'DOM is not ready. Waiting...');
+        this.log('DOM is not ready. Waiting...');
         window.addEventListener('load', this.initialise.bind(this));
     }
 
@@ -21,13 +22,15 @@ var hy = function(debugLevel) {
 
 hy.prototype.initialise = function() {
 
-    this.log(this.DEBUG.VERBOSE, 'Initialising...');
+    this.log('Initialising...');
 
 
-    this.log(this.DEBUG.VERBOSE, 'Initialising Canvas');
+    this.log('Initialising Canvas');
 
-    this.Canvas = new hy.Canvas(this, this.DEFAULT.WIDTH, this.DEFAULT.HEIGHT);
-    this.log(this.DEBUG.INFO, 'HYJS is initialised');
+    this.Canvas = new hy.Canvas(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
+    this.log('HYJS is initialised');
+
+    this._initialised = true;
 
 };
 

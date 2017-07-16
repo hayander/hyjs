@@ -1,8 +1,6 @@
 'use strict';
 
-var hy = require('./core');
-
-var constants = {
+module.exports = {
 
     DEBUG: {
         ERROR: 4,
@@ -20,15 +18,3 @@ var constants = {
 
 };
 
-hy.prototype.setGlobalConstants = function() {
-    this.setInstanceConstants(this);
-};
-
-hy.prototype.setInstanceConstants = function(instance) {
-    // Attach constants to the current instance
-    for ( var index in constants ) {
-        instance[index] = constants[index];
-    }
-};
-
-module.exports = hy;

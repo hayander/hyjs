@@ -2,14 +2,9 @@
 
 var hy = require('./core');
 
-hy.prototype.log = function(errorLevel, message) {
-    if ( errorLevel >= this.debugLevel ) {
-
-        if ( typeof message !== 'string' ) {
-            console.log(message);
-        } else {
-            console.log('[' + errorLevel + '] ' + message + (typeof message !== 'string' ? ':' : ''));
-        }
+hy.prototype.log = function(message) {
+    if ( this._debugging ) {
+        console.log(message);
     }
 };
 
