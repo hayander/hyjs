@@ -14,7 +14,7 @@ hy.Canvas.prototype.drawLoop = function() {
         this.hy.drawLoop.apply(this);
         window.requestAnimationFrame(this.drawLoop.bind(this));
     } else {
-        this.hy.log(this.DEBUG.ERROR, 'No draw loop defined');
+        this.hy.log('No draw loop defined');
     }
 };
 

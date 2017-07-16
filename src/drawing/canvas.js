@@ -20,7 +20,7 @@ hy.Canvas.prototype.createCanvas = function(width, height) {
     var c = document.getElementById('hycanvas');
 
     if ( c ) {
-        document.removeChild(c);
+        c.parentNode.removeChild(c);
     }
     c = document.createElement('canvas');
 
@@ -28,15 +28,15 @@ hy.Canvas.prototype.createCanvas = function(width, height) {
 
     c.id = 'hycanvas';
 
-    c = this.resizeCanvas(c, width, height);
+    this.resizeCanvas(c, width, height);
 
 
     return c;
 };
 
 hy.Canvas.prototype.resizeCanvas = function(canvas, width, height) {
-    if ( !canvas ) {
-        throw('No canvas exists to resize');
+    if ( !( canvas instanceof HTMLElement ) ) {
+        throw new TypeError('Invalid canvas to resize');
     }
 
 
@@ -44,12 +44,7 @@ hy.Canvas.prototype.resizeCanvas = function(canvas, width, height) {
     canvas.height       = height;
     canvas.style.width  = width + 'px';
     canvas.style.height = height + 'px';
-
-    return canvas;
 };
-
-
-
 
 
 module.exports = hy.Canvas;
