@@ -12,9 +12,6 @@ suite('Canvas', function() {
         test('should create instance of hy.Canvas', function() {
             assert.instanceOf(hyI.Canvas, hy.Canvas);
         });
-        test('Canvas should be a dom object', function() {
-            assert.instanceOf(hyI.Canvas.canvas, HTMLElement);
-        });
         test('Old DOM object should be deleted', function() {
             assert.notDeepEqual(currentCanvas, hyI.Canvas.canvas);
         });
