@@ -1,5 +1,9 @@
 module.exports = function (grunt) {
 
+    var keepalive = false;
+    if (grunt.option('keepalive')) {
+        keepalive = true;
+    }
 
     grunt.initConfig({
 
@@ -51,7 +55,7 @@ module.exports = function (grunt) {
                 options: {
                     base: './',
                     port: 8888,
-                    keepalive: false,
+                    keepalive: keepalive,
                     middleware: function (connect, options, middlewares) {
                         middlewares.unshift(function (req, res, next) {
                             res.setHeader('Access-Control-Allow-Origin', '*');
@@ -137,6 +141,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', ['browserify', 'uglify']);
     grunt.registerTask('test', ['force:jshint', 'build', 'connect', 'mocha', 'plato']);
     grunt.registerTask('default', ['test']);
+    grunt.registerTask('localtest', ['connect']);
     grunt.registerTask('sync', ['browserSync', 'watch']);
 
 };
