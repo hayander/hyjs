@@ -5,6 +5,13 @@ var hy = require('../../core/core');
 // Helper method
 hy.prototype.colour = function() {
 
+    if ( arguments[0] instanceof Array ) {
+        console.log('true');
+    }
+    if ( Object.prototype.toString.call(arguments[0]) === '[object Arguments]' ) {
+        return new hy.Colour(arguments[0]);
+    }
+
     return new hy.Colour(arguments);
 };
 
@@ -138,5 +145,11 @@ hy.Colour.prototype.resolveFormat = function(args) {
 
 };
 
+hy.Colour.prototype.hex = function() {
+    var hex = this.rgb.map(function(val) {
+        return val.toString(16);
+    });
+    return '#' + hex[0] + hex[1] + hex[2];
+};
 
 module.exports = hy.Colour;

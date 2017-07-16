@@ -3,7 +3,7 @@
 var hy = require('../core/core');
 
 hy.Canvas.prototype.background = function() {
-    var colour = this.hy.colour(arguments);
+    var colour = this.hy.colour(arguments).hex();
 
     var ctx   = this.canvas.getContext('2d');
 
