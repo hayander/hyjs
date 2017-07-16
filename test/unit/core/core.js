@@ -1,3 +1,6 @@
+var hyI = new hy();
+
+
 suite('Core', function() {
     var node;
 
@@ -12,17 +15,18 @@ suite('Core', function() {
 
     suite('new hy()', function () {
 
-        // The reason why these tests run inside the suite() { ... } block is
-        // because they test code that checks document.readyState.  If we waited
-        // to run the test in test() { ... } the page would already be loaded and
-        // readyState would be "completed".  By doing the tests things this way
-        // readyState is "loading" and we can verify that the code is doing the
-        // right thing during page load.
 
-        var myhy = new hy();
-
-        test('Canvas should be initialised', function () {
-            assert.ok(myhy.Canvas);
+        test('Should create instance of hy', function() {
+            assert.instanceOf(hyI, hy);
         });
+        test('_initialised should be true', function () {
+            assert.isOk(hyI._initialised);
+        });
+        test('Constants are loaded', function() {
+            assert.isObject(hyI._c);
+        });
+        test('Canvas is an instance of hy.Canvas', function() {
+            assert.instanceOf(hyI.Canvas, hy.Canvas);
+        })
     });
 });
