@@ -28,7 +28,9 @@ module.exports = function (grunt) {
         jshint: {
             build: {
                 options: {
-                    jshintrc: 'grunt/.jshintrc'
+                    jshintrc: 'grunt/.jshintrc',
+                    reporter: 'checkstyle',
+                    reporterOutput: 'build/logs/libcheckstyle.xml'
                 },
                 src: [
                     'Gruntfile.js',
@@ -42,12 +44,6 @@ module.exports = function (grunt) {
                     reporterOutput: 'build/logs/checkstyle.xml'
                 },
                 src: ['src/**/*.js']
-            },
-            test: {
-                options: {
-                    jshintrc: 'test/.jshintrc'
-                },
-                src: ['test/unit/**/*.js']
             }
         },
         connect: {
