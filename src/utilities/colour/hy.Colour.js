@@ -142,9 +142,19 @@ hy.Colour.prototype.resolveFormat = function(args) {
 
 hy.Colour.prototype.hex = function() {
     var hex = this.rgb.map(function(val) {
-        return val.toString(16);
+        var value = val.toString(16);
+
+        // Leading zero
+        if ( value.length === 1 ) {
+            value = '0' + value;
+        }
+        return value;
     });
     return '#' + hex[0] + hex[1] + hex[2];
+};
+
+hy.Colour.prototype.string = function() {
+    return 'rgba(' + this.rgb[0] + ',' + this.rgb[1] + ',' + this.rgb[2] + ',' + this.normal[3] + ')';
 };
 
 module.exports = hy.Colour;
