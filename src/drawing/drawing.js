@@ -10,4 +10,6 @@ hy.prototype.background = function() {
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
+
+
 module.exports = hy;

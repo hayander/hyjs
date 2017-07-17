@@ -4,9 +4,6 @@ var hy = require('../../core/core');
 
 hy.prototype.colour = function() {
 
-    if ( arguments[0] instanceof Array ) {
-        console.log('true');
-    }
     if ( Object.prototype.toString.call(arguments[0]) === '[object Arguments]' ) {
         return new hy.Colour(arguments[0]);
     }

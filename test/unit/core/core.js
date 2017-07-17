@@ -26,7 +26,7 @@ suite('Core', function() {
             assert.isObject(hyI._c);
         });
         test('Display is an instance of hy.Display', function() {
-            assert.instanceOf(hyI.Display, hy.Display);
-        })
+            assert.instanceOf(hyI._display, hy.Display);
+        });
     });
 });
