@@ -31,7 +31,7 @@ hy.prototype.initialise = function() {
     this._display = new hy.Display(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
 
     this.canvas = this._display._canvas;
-    this.ctx    = this._display._ctx;
+    this._ctx    = this._display._ctx;
 
     this._initialised = true;
 

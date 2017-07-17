@@ -14,6 +14,10 @@ module.exports = {
         WIDTH: 640,
         HEIGHT: 480,
         FRAMERATE: 30
+    },
+
+    STYLE: {
+        EMPTY: 'rgba(0,0,0,0)'
     }
 
 };
