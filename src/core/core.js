@@ -25,12 +25,18 @@ hy.prototype.initialise = function() {
     this.log('Initialising...');
 
 
-    this.log('Initialising Canvas');
+    this.log('Initialising Display');
 
-    this.Canvas = new hy.Canvas(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
-    this.log('HYJS is initialised');
+    this._display = new hy.Display(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
+
+    this.canvas = this._display._canvas;
+    this.ctx = this._display._ctx;
 
     this._initialised = true;
+
+    this.log(this);
+    this.log('HYJS is initialised');
+
 
 };
 

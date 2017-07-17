@@ -8,7 +8,7 @@ require('./core/logging');
 
 // Rendering
 require('./drawing/wrapper');
-require('./drawing/canvas');
+require('./drawing/hy.Display');
 require('./drawing/drawing');
 require('./drawing/animating');
 

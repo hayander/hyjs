@@ -2,7 +2,6 @@
 
 var hy = require('../../core/core');
 
-// Helper method
 hy.prototype.colour = function() {
 
     if ( arguments[0] instanceof Array ) {
@@ -25,7 +24,6 @@ hy.Colour = function(args) {
     this.rgb = result.map(function(value) {
         return parseInt(value * 255, 10);
     });
-
 
     this.normal = result;
 

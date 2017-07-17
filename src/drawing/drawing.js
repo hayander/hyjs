@@ -2,13 +2,12 @@
 
 var hy = require('../core/core');
 
-hy.Canvas.prototype.background = function() {
-    var colour = this.hy.colour(arguments).hex();
+hy.prototype.background = function() {
+    var colour = this.colour(arguments).hex();
 
-    var ctx   = this.canvas.getContext('2d');
+    this.ctx.fillStyle = colour;
 
-    ctx.fillStyle = colour;
-    ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
 module.exports = hy;

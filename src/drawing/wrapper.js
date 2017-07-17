@@ -3,7 +3,7 @@
 var hy = require('../core/core');
 
 hy.prototype.background = function() {
-    this.Canvas.background.apply(this.Canvas, arguments);
+    this.Display.background.apply(this.Display, arguments);
 };
 
 module.exports = hy;

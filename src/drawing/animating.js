@@ -2,19 +2,19 @@
 
 var hy = require('../core/core');
 
-hy.Canvas.prototype.drawLoop = function() {
-    if ( this.hy.drawLoop && typeof this.hy.drawLoop === 'function' ) {
+hy.Display.prototype.drawLoop = function() {
+    if ( this.drawLoop && typeof this.drawLoop === 'function' ) {
 
-        this.hy._frameCount++;
+        this._frameCount++;
         var currentTime = new Date();
-        this.hy._frameRate  = 1000 / (currentTime - this.hy._lastFrameTime);
-        this.hy._lastFrameTime  = currentTime;
+        this._frameRate  = 1000 / (currentTime - this._lastFrameTime);
+        this._lastFrameTime  = currentTime;
 
+        this.drawLoop.apply(this);
 
-        this.hy.drawLoop.apply(this);
-        window.requestAnimationFrame(this.drawLoop.bind(this));
+        window.requestAnimationFrame(this._display.drawLoop.bind(this));
     } else {
-        this.hy.log('No draw loop defined');
+        this.log('No draw loop defined');
     }
 };
 

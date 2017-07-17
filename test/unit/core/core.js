@@ -25,8 +25,8 @@ suite('Core', function() {
         test('Constants are loaded', function() {
             assert.isObject(hyI._c);
         });
-        test('Canvas is an instance of hy.Canvas', function() {
-            assert.instanceOf(hyI.Canvas, hy.Canvas);
+        test('Display is an instance of hy.Display', function() {
+            assert.instanceOf(hyI.Display, hy.Display);
         })
     });
 });

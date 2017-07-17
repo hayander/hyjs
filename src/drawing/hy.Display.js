@@ -3,19 +3,19 @@
 var hy = require('../core/core');
 
 
-hy.Canvas = function(hyInstance, width, height) {
+hy.Display = function(hyInstance, width, height) {
 
-    this.hy = hyInstance;
+    this._hy = hyInstance;
 
-    this.canvas = this.createCanvas(width, height);
+    this._canvas = this.createCanvas(width, height);
+    this._ctx = this._canvas.getContext('2d');
 
-
-    window.requestAnimationFrame(this.drawLoop.bind(this));
+    window.requestAnimationFrame(this.drawLoop.bind(this._hy));
 
 };
 
 
-hy.Canvas.prototype.createCanvas = function(width, height) {
+hy.Display.prototype.createCanvas = function(width, height) {
 
     var c = document.getElementById('hycanvas');
 
@@ -34,7 +34,7 @@ hy.Canvas.prototype.createCanvas = function(width, height) {
     return c;
 };
 
-hy.Canvas.prototype.resizeCanvas = function(canvas, width, height) {
+hy.Display.prototype.resizeCanvas = function(canvas, width, height) {
     if ( !( canvas instanceof HTMLElement ) ) {
         throw new TypeError('Invalid canvas to resize');
     }
@@ -47,4 +47,4 @@ hy.Canvas.prototype.resizeCanvas = function(canvas, width, height) {
 };
 
 
-module.exports = hy.Canvas;
+module.exports = hy.Display;
