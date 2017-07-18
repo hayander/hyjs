@@ -15,6 +15,7 @@ require('./drawing/animating');
 
 // Utilities
 require('./utilities/colour/hy.Colour');
+require('./utilities/drawing');
 
 module.exports = hy;
 

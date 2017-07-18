@@ -16,6 +16,14 @@ module.exports = {
         FRAMERATE: 30
     },
 
+    MODE: {
+        SIZE: 1,
+        CORNERS: 2,
+        CENTER: 3
+    },
+
+
+
     STYLE: {
         EMPTY: 'rgba(0,0,0,0)'
     }
