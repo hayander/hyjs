@@ -46,8 +46,8 @@ hy.Display.prototype.resizeCanvas = function(canvas, width, height) {
     if ( !( canvas instanceof HTMLElement ) ) {
         throw new TypeError('Invalid canvas to resize');
     }
-
-
+    this.width          = width;
+    this.height         = height;
     canvas.width        = width;
     canvas.height       = height;
     canvas.style.width  = width + 'px';
@@ -62,10 +62,10 @@ hy.Display.prototype.background = function(colour) {
     this._ctx.save();
 
     var currentStyle    = this._ctx.fillStyle;
-    this._ctx.fillStyle = colour.hex();
+    this._ctx.fillStyle = colour.string();
     this._ctx.fillRect(0, 0, this.width, this.height);
-
     this._ctx.fillStyle = currentStyle;
+
 
     this._ctx.restore();
 
