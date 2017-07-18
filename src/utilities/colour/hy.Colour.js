@@ -31,7 +31,7 @@ hy.Colour = function(args) {
 };
 
 // Ignore line too long error
-/* jshint ignore:start */
+/* jshint -W101 */
 
 var colourRegex = {
 
@@ -47,7 +47,7 @@ var colourRegex = {
     RGB: /^rgba?\(((?:\d{0,3}\.)?\d+%?),((?:\d{0,3}\.)?\d+%?),((?:\d{0,3}\.)?\d+%?)(?:(?:\);?)|,(?:((?:\d{0,3}\.)?\d+%?)(?:\);?)))$/i
 };
 
-/* jshint ignore:end */
+/* jshint +W101 */
 
 
 hy.Colour.prototype.resolveFormat = function(args) {
