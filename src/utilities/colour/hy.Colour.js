@@ -30,6 +30,9 @@ hy.Colour = function(args) {
 
 };
 
+// Ignore line too long error
+/* jshint ignore:start */
+
 var colourRegex = {
 
     // Regex for #RGB
@@ -43,6 +46,9 @@ var colourRegex = {
     // rgb(21,50,64) - rgb(20%,50%,30%) - rgba(21,50,60,0.5) - rgba(20%,50%,30%,0.5)
     RGB: /^rgba?\(((?:\d{0,3}\.)?\d+%?),((?:\d{0,3}\.)?\d+%?),((?:\d{0,3}\.)?\d+%?)(?:(?:\);?)|,(?:((?:\d{0,3}\.)?\d+%?)(?:\);?)))$/i
 };
+
+/* jshint ignore:end */
+
 
 hy.Colour.prototype.resolveFormat = function(args) {
     var result = null;

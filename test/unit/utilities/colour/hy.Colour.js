@@ -64,8 +64,8 @@ suite('hy.Color', function() {
         });
         suite('Use case checks', function() {
             test('Numeric hex values', function() {
-                c = hyI.colour('#000');
-                assert.deepEqual(c.rgb, [0, 0, 0, 255]);
+                c = hyI.colour('#020202');
+                assert.deepEqual(c.rgb, [2, 2, 2, 255]);
             });
 
             test('Alphabetic hex values', function() {
