@@ -71,22 +71,27 @@ hy.Display.prototype.background = function(colour) {
 
 };
 
-// TODO: Proper error checking
-// TODO: Don't waste cycles if not stroking or filling
-
 hy.Display.prototype.line = function(x1, y1, x2, y2) {
+
+    if ( !this._canDraw(this._hy._c.DRAW.STROKE) ) {
+        return;
+    }
 
     this._ctx.beginPath();
     this._ctx.moveTo(x1, y1);
     this._ctx.lineTo(x2, y2);
-    this._ctx.stroke();
+
+    if ( this._stroke ) {
+        this._ctx.stroke();
+    }
 
 };
 
-// TODO: Proper error checking
-// TODO: Don't waste cycles if not stroking or filling
-
 hy.Display.prototype.rect = function(args) {
+
+    if ( !this._canDraw() ) {
+        return;
+    }
 
     var x = args[0], y = args[1], w = args[2], h = args[3];
 
@@ -105,13 +110,15 @@ hy.Display.prototype.rect = function(args) {
         this._ctx.stroke();
     }
 
-};
+}
+;
 
-// TODO: Proper error checking
-// TODO: Don't waste cycles if not stroking or filling
 
 hy.Display.prototype.ellipse = function(args) {
 
+    if ( !this._canDraw() ) {
+        return;
+    }
 
     // Optimal control point offset
     // (4/3)*tan(pi/(2n))
@@ -141,8 +148,14 @@ hy.Display.prototype.ellipse = function(args) {
     this._ctx.bezierCurveTo(xMiddle + xOffset, yBottom, xRight, yMiddle + yOffset, xRight, yMiddle);
 
     this._ctx.closePath();
-    this._ctx.fill();
-    this._ctx.stroke();
+
+    if ( this._fill ) {
+        this._ctx.fill();
+    }
+
+    if ( this._stroke ) {
+        this._ctx.stroke();
+    }
 
 
 };
@@ -166,10 +179,34 @@ hy.Display.prototype.setStroke = function(colour) {
 };
 
 hy.Display.prototype.unsetStroke = function() {
-    console.log('aa');
     this._styles.stroke   = this._hy._c.STYLE.EMPTY;
     this._stroke          = false;
     this._ctx.strokeStyle = this._styles.stroke;
+};
+
+hy.Display.prototype._canDraw = function(only) {
+    if ( !this._stroke && !this._fill ) {
+        return false;
+    } else if ( this._stroke && !this._fill ) {
+        if ( this._ctx.strokeStyle === this._hy._c.STYLE.EMPTY ) {
+            return false;
+        }
+    } else if ( this._fill && !this._stroke ) {
+        if ( this._ctx.fillStyle === this._hy._c.STYLE.EMPTY ) {
+            return false;
+        }
+    } else if ( this._ctx.strokeStyle === this._hy._c.STYLE.EMPTY ) {
+        if ( only === this._hy._c.DRAW.STROKE || this._ctx.fillStyle === this._hy._c.STYLE.EMPTY ) {
+            return false;
+        }
+    } else if ( this._ctx.fillStyle === this._hy._c.STYLE.EMPTY ) {
+        if ( only === this._hy._c.DRAW.FILL || this._ctx.strokeStyle === this._hy._c.STYLE.EMPTY ) {
+            return false;
+        }
+    }
+
+
+    return true;
 };
 
 module.exports = hy.Display;

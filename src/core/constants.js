@@ -16,6 +16,11 @@ module.exports = {
         FRAMERATE: 30
     },
 
+    DRAW: {
+        STROKE: 1,
+        FILL: 2
+    },
+
     MODE: {
         SIZE: 1,
         CORNERS: 2,
@@ -24,7 +29,7 @@ module.exports = {
     },
 
     STYLE: {
-        EMPTY: 'rgba(0,0,0,0)'
+        EMPTY: 'rgba(0, 0, 0, 0)'
     }
 
 };
