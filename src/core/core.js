@@ -12,7 +12,8 @@ var hy = function(debug) {
     this._frameCount      = 0;
 
     this._modes = {
-        rect: this._c.MODE.WIDTH
+        rect: this._c.MODE.SIZE,
+        ellipse: this._c.MODE.CENTER
     };
 
     if ( document.readyState === 'complete' ) {

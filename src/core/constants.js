@@ -19,10 +19,9 @@ module.exports = {
     MODE: {
         SIZE: 1,
         CORNERS: 2,
-        CENTER: 3
+        CENTER: 3,
+        RADIUS: 4
     },
-
-
 
     STYLE: {
         EMPTY: 'rgba(0,0,0,0)'

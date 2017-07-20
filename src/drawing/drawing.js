@@ -19,6 +19,11 @@ hy.prototype.rect = function(x1, y1, x2, y2) {
     this._display.rect(args);
 };
 
+hy.prototype.ellipse = function(x1, y1, x2, y2) {
+    var args = this.adjustPointsForMode(this._modes.ellipse, x1, y1, x2, y2);
+    this._display.ellipse(args);
+};
+
 hy.prototype.setStroke = function(val) {
     var colour = this.colour(arguments);
     this._display.setStroke(colour);

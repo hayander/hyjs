@@ -101,6 +101,43 @@ hy.Display.prototype.rect = function(args) {
 
 };
 
+hy.Display.prototype.ellipse = function(args) {
+
+
+    // Optimal control point offset
+    // (4/3)*tan(pi/(2n))
+    // (4/3)*tan(pi/8) = 4*(sqrt(2)-1)/3 = 0.552284749831
+
+    var offset  = 0.552284749831,
+        width   = args[2],
+        height  = args[3],
+        xLeft   = args[0],
+        xRight  = xLeft + width,
+        xMiddle = xLeft + ( xRight - xLeft ) / 2,
+        yTop    = args[1],
+        yBottom = yTop + height,
+        yMiddle = yTop + ( yBottom - yTop ) / 2;
+
+
+    var yOffset = (height / 2) * offset,
+        xOffset = (width / 2) * offset;
+
+
+    this._ctx.beginPath();
+
+    this._ctx.moveTo(xRight, yMiddle);
+    this._ctx.bezierCurveTo(xRight, yMiddle - yOffset, xMiddle + xOffset, yTop, xMiddle, yTop);
+    this._ctx.bezierCurveTo(xMiddle - xOffset, yTop, xLeft, yMiddle - yOffset, xLeft, yMiddle);
+    this._ctx.bezierCurveTo(xLeft, yMiddle + yOffset, xMiddle - xOffset, yBottom, xMiddle, yBottom);
+    this._ctx.bezierCurveTo(xMiddle + xOffset, yBottom, xRight, yMiddle + yOffset, xRight, yMiddle);
+
+    this._ctx.closePath();
+    this._ctx.fill();
+    this._ctx.stroke();
+
+
+};
+
 hy.Display.prototype.setFill = function(colour) {
     this._styles.fill   = colour.string();
     this._fill          = true;
