@@ -1,8 +1,10 @@
 module.exports = function (grunt) {
 
     var keepalive = false;
+    var connectPort = 8889;
     if (grunt.option('keepalive')) {
         keepalive = true;
+        connectPort = 8888;
     }
 
     grunt.initConfig({
@@ -50,7 +52,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     base: './',
-                    port: 8888,
+                    port: connectPort,
                     keepalive: keepalive,
                     middleware: function (connect, options, middlewares) {
                         middlewares.unshift(function (req, res, next) {
@@ -66,7 +68,7 @@ module.exports = function (grunt) {
         mocha: {
             test: {
                 options: {
-                    urls:[ 'http://localhost:8888/test/test.html'],
+                    urls:[ 'http://localhost:'+connectPort+'/test/test.html'],
                     reporter: 'XUnit',
 
                     run: true,
@@ -78,7 +80,7 @@ module.exports = function (grunt) {
             },
             testmin: {
                 options: {
-                    urls: ['http://localhost:8888/test/test.min.html'],
+                    urls: ['http://localhost:'+connectPort+'/test/test.min.html'],
                     reporter: 'XUnit',
                     run: true,
                     log: true,
