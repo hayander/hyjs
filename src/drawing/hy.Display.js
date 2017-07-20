@@ -71,6 +71,9 @@ hy.Display.prototype.background = function(colour) {
 
 };
 
+// TODO: Proper error checking
+// TODO: Don't waste cycles if not stroking or filling
+
 hy.Display.prototype.line = function(x1, y1, x2, y2) {
 
     this._ctx.beginPath();
@@ -79,6 +82,9 @@ hy.Display.prototype.line = function(x1, y1, x2, y2) {
     this._ctx.stroke();
 
 };
+
+// TODO: Proper error checking
+// TODO: Don't waste cycles if not stroking or filling
 
 hy.Display.prototype.rect = function(args) {
 
@@ -100,6 +106,9 @@ hy.Display.prototype.rect = function(args) {
     }
 
 };
+
+// TODO: Proper error checking
+// TODO: Don't waste cycles if not stroking or filling
 
 hy.Display.prototype.ellipse = function(args) {
 
