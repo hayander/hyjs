@@ -48,7 +48,7 @@ hy.prototype.setRectMode = function(mode) {
     }, this);
 
     // Set mode or default value if doesn't exist.
-    this._modes.rect = ( val.includes(mode) ? mode : this._c.MODE.CENTER );
+    this._modes.rect = ( val.includes(mode) ? mode : this._c.MODE.SIZE );
 
 };
 

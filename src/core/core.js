@@ -11,6 +11,11 @@ var hy = function(debug) {
     this._lastFrameTime   = new Date();
     this._frameCount      = 0;
 
+    this._modes = {};
+
+    this.setRectMode();
+    this.setEllipseMode();
+
     this._modes = {
         rect: this._c.MODE.SIZE,
         ellipse: this._c.MODE.CENTER
