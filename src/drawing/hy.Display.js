@@ -166,9 +166,10 @@ hy.Display.prototype.text = function(args) {
         y    = args[2];
 
     if ( this._stroke ) {
-        this._ctx.lineWidth ++;
+        var originalWidth = this._ctx.lineWidth;
+        this._ctx.lineWidth *= 2;
         this._ctx.strokeText(text, x, y);
-        this._ctx.lineWidth --;
+        this._ctx.lineWidth = originalWidth;
     }
     if ( this._fill ) {
         this._ctx.fillText(text, x, y);
@@ -197,6 +198,10 @@ hy.Display.prototype.unsetStroke = function() {
     this._styles.stroke   = this._hy._c.STYLE.EMPTY;
     this._stroke          = false;
     this._ctx.strokeStyle = this._styles.stroke;
+};
+
+hy.Display.prototype.setStrokeWidth = function(width) {
+    this._ctx.lineWidth = width;
 };
 
 hy.Display.prototype._canDraw = function(only) {

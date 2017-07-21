@@ -38,6 +38,14 @@ hy.prototype.unsetStroke = function(val) {
     this._display.unsetStroke();
 };
 
+hy.prototype.setStrokeWidth = function(width) {
+    if ( typeof width === 'number' ) {
+        // Greater than zero
+        var w = ( width <= 0 ) ? 1 : width;
+        this._display.setStrokeWidth(w);
+    }
+};
+
 hy.prototype.setFill = function(val) {
     var colour = this.colour(arguments);
     this._display.setFill(colour);
