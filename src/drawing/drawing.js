@@ -24,6 +24,11 @@ hy.prototype.ellipse = function(x1, y1, x2, y2) {
     this._display.ellipse(args);
 };
 
+hy.prototype.text = function(text, x, y) {
+    var args = [text, x, y];
+    this._display.text(args);
+};
+
 hy.prototype.setStroke = function(val) {
     var colour = this.colour(arguments);
     this._display.setStroke(colour);

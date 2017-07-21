@@ -110,9 +110,7 @@ hy.Display.prototype.rect = function(args) {
         this._ctx.stroke();
     }
 
-}
-;
-
+};
 
 hy.Display.prototype.ellipse = function(args) {
 
@@ -156,8 +154,25 @@ hy.Display.prototype.ellipse = function(args) {
     if ( this._stroke ) {
         this._ctx.stroke();
     }
+};
 
+hy.Display.prototype.text = function(args) {
+    if ( !this._canDraw() ) {
+        return;
+    }
 
+    var text = args[0],
+        x    = args[1],
+        y    = args[2];
+
+    if ( this._stroke ) {
+        this._ctx.lineWidth ++;
+        this._ctx.strokeText(text, x, y);
+        this._ctx.lineWidth --;
+    }
+    if ( this._fill ) {
+        this._ctx.fillText(text, x, y);
+    }
 };
 
 hy.Display.prototype.setFill = function(colour) {
