@@ -42,5 +42,24 @@ hy.prototype.unsetFill = function() {
     this._display.unsetFill();
 };
 
+hy.prototype.setRectMode = function(mode) {
+    var val = Object.keys(this._c.MODE).map(function(key) {
+        return this._c.MODE[key];
+    }, this);
+
+    // Set mode or default value if doesn't exist.
+    this._modes.rect = ( val.includes(mode) ? mode : this._c.MODE.CENTER );
+
+};
+
+hy.prototype.setEllipseMode = function(mode) {
+    var val = Object.keys(this._c.MODE).map(function(key) {
+        return this._c.MODE[key];
+    }, this);
+
+    // Set mode or default value if doesn't exist.
+    this._modes.ellipse = ( val.includes(mode) ? mode : this._c.MODE.CENTER );
+};
+
 
 module.exports = hy;
