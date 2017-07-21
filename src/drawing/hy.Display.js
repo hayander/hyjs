@@ -13,10 +13,14 @@ hy.Display = function(hyInstance, width, height) {
     this.width  = this._canvas.width;
     this.height = this._canvas.height;
 
-    this._stroke = false;
-    this._fill   = false;
-
     this._styles = {};
+
+    this._stroke = true;
+    this._fill   = true;
+
+    // Set default styles
+    this.setStroke(this._hy.colour(this._hy._c.DEFAULT.STROKE));
+    this.setFill(this._hy.colour(this._hy._c.DEFAULT.FILL));
 
     window.requestAnimationFrame(this.drawLoop.bind(this._hy));
 

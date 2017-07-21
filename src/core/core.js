@@ -11,15 +11,22 @@ var hy = function(debug) {
     this._lastFrameTime   = new Date();
     this._frameCount      = 0;
 
-    this._modes = {};
+    this._modes = {
+        rect: 0,
+        ellipse: 0
+    };
+
+    this._text = {
+        style: 'normal',
+        variant: 'normal',
+        weight: 'normal',
+        size: 12,
+        lineSpace: 15,
+        font: 'sans-serif'
+    };
 
     this.setRectMode();
     this.setEllipseMode();
-
-    this._modes = {
-        rect: this._c.MODE.SIZE,
-        ellipse: this._c.MODE.CENTER
-    };
 
     if ( document.readyState === 'complete' ) {
         this.initialise();

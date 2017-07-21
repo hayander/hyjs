@@ -9,11 +9,12 @@ module.exports = {
         VERBOSE: 1
     },
 
-
     DEFAULT: {
         WIDTH: 640,
         HEIGHT: 480,
-        FRAMERATE: 30
+        FRAMERATE: 30,
+        STROKE: '#000000',
+        FILL: '#FFFFFF'
     },
 
     DRAW: {
@@ -29,7 +30,13 @@ module.exports = {
     },
 
     STYLE: {
-        EMPTY: 'rgba(0, 0, 0, 0)'
+        EMPTY: 'rgba(0, 0, 0, 0)',
+        NORMAL: 'normal',
+        ITALIC: 'italic',
+        OBLIQUE: 'oblique',
+        SMALLCAPS: 'small-caps',
+        BOLD: 'bold',
+        BOLDER: 'bolder'
     }
 
 };
