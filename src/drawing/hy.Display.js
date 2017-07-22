@@ -22,8 +22,6 @@ hy.Display = function(hyInstance, width, height) {
     this.setStroke(this._hy.colour(this._hy._c.DEFAULT.STROKE));
     this.setFill(this._hy.colour(this._hy._c.DEFAULT.FILL));
 
-    window.requestAnimationFrame(this.drawLoop.bind(this._hy));
-
 };
 
 

@@ -2,11 +2,18 @@
 
 var constants = require('./constants');
 
-var hy = function(debug) {
+// TODO: GLOBAL MODE
+var hy = function(instance, debug) {
+
+    this._debugging       = debug !== undefined ? debug : false;
+    this.log('Starting...');
+
 
     this._c = constants;
 
-    this._debugging       = debug !== undefined ? debug : false;
+    this._instance = instance;
+    this._global = false;
+
     this._targetFrameRate = this._c.DEFAULT.FRAMERATE;
     this._lastFrameTime   = new Date();
     this._frameCount      = 0;
@@ -29,21 +36,16 @@ var hy = function(debug) {
     this.setEllipseMode();
 
     if ( document.readyState === 'complete' ) {
-        this.initialise();
+        this._initialise();
     } else {
         this.log('DOM is not ready. Waiting...');
-        window.addEventListener('load', this.initialise.bind(this));
+        window.addEventListener('load', this._initialise.bind(this));
     }
-
 };
 
 
-hy.prototype.initialise = function() {
+hy.prototype._initialise = function() {
 
-    this.log('Initialising...');
-
-
-    this.log('Initialising Display');
 
     this._display = new hy.Display(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
 
@@ -52,10 +54,18 @@ hy.prototype.initialise = function() {
 
     this._initialised = true;
 
-    this.log(this);
     this.log('HYJS is initialised');
 
+    if ( this._instance ) {
+        this._instance.call(this);
+    }
+    else {
+        this._global = true;
+        this._instance = this;
+        this._initialiseGlobalInstance();
+    }
 
+    window.requestAnimationFrame(this._draw.bind(this));
 };
 
 

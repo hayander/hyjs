@@ -11,8 +11,10 @@ hy.prototype.frameRate = function(val) {
     }
 };
 
-hy.Display.prototype.drawLoop = function() {
-    if ( this.drawLoop && typeof this.drawLoop === 'function' ) {
+hy.prototype._draw = function() {
+
+    var drawFunc = this.drawFrame || window.drawFrame;
+    if ( drawFunc && typeof drawFunc === 'function' ) {
         var currentTime = new Date();
         var frameRateGap = ( 1000 / this._targetFrameRate ) - 5;
         if ( ( currentTime - this._lastFrameTime ) >= frameRateGap ) {
@@ -20,10 +22,11 @@ hy.Display.prototype.drawLoop = function() {
             this._frameRate     = 1000 / (currentTime - this._lastFrameTime);
             this._lastFrameTime = currentTime;
 
-            this.drawLoop.apply(this);
+            drawFunc.apply(this);
+            //apply(this);
         }
 
-        window.requestAnimationFrame(this._display.drawLoop.bind(this));
+        window.requestAnimationFrame(this._draw.bind(this));
     } else {
         this.log('No draw loop defined');
     }
