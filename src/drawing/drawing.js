@@ -4,9 +4,7 @@ var hy = require('../core/core');
 
 hy.prototype.background = function() {
     var colour = this.colour(arguments);
-
     this._display.background(colour);
-
     return this;
 };
 
@@ -61,7 +59,14 @@ hy.prototype.setRectMode = function(mode) {
     }, this);
 
     // Set mode or default value if doesn't exist.
-    this._modes.rect = ( val.includes(mode) ? mode : this._c.MODE.SIZE );
+    var valid = false;
+    for ( var i = 0; i < val.length; i ++ ) {
+        if ( val[i] === mode ) {
+            valid = true;
+            break;
+        }
+    }
+    this._modes.rect = ( valid ? mode : this._c.MODE.SIZE );
 
 };
 
@@ -71,7 +76,14 @@ hy.prototype.setEllipseMode = function(mode) {
     }, this);
 
     // Set mode or default value if doesn't exist.
-    this._modes.ellipse = ( val.includes(mode) ? mode : this._c.MODE.CENTER );
+    var valid = false;
+    for ( var i = 0; i < val.length; i ++ ) {
+        if ( val[i] === mode ) {
+            valid = true;
+            break;
+        }
+    }
+    this._modes.ellipse = ( valid ? mode : this._c.MODE.CENTER );
 };
 
 
