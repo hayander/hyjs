@@ -54,8 +54,8 @@ hy.prototype.unsetFill = function() {
 };
 
 hy.prototype.setRectMode = function(mode) {
-    var val = Object.keys(this._c.MODE).map(function(key) {
-        return this._c.MODE[key];
+    var val = Object.keys(this.MODE).map(function(key) {
+        return this.MODE[key];
     }, this);
 
     // Set mode or default value if doesn't exist.
@@ -66,13 +66,13 @@ hy.prototype.setRectMode = function(mode) {
             break;
         }
     }
-    this._modes.rect = ( valid ? mode : this._c.MODE.SIZE );
+    this._modes.rect = ( valid ? mode : this.MODE.SIZE );
 
 };
 
 hy.prototype.setEllipseMode = function(mode) {
-    var val = Object.keys(this._c.MODE).map(function(key) {
-        return this._c.MODE[key];
+    var val = Object.keys(this.MODE).map(function(key) {
+        return this.MODE[key];
     }, this);
 
     // Set mode or default value if doesn't exist.
@@ -83,7 +83,7 @@ hy.prototype.setEllipseMode = function(mode) {
             break;
         }
     }
-    this._modes.ellipse = ( valid ? mode : this._c.MODE.CENTER );
+    this._modes.ellipse = ( valid ? mode : this.MODE.CENTER );
 };
 
 

@@ -31,12 +31,6 @@ suite('Display', function() {
             }
             expect(resize).to.throw(TypeError);
         });
-        test('A valid canvas should not throw an error', function() {
-            var resize = function() {
-                hyI._display.resizeCanvas(hyI._display.canvas, 50, 50);
-            }
-            expect(resize).to.not.throw(TypeError);
-        });
         test('Should resize the canvas', function() {
             var oldW = hyI._display.canvas.width;
             var oldH = hyI._display.canvas.height;
@@ -54,29 +48,29 @@ suite('Display', function() {
             assert.equal(hyI._display._canDraw(), false);
         });
         test('Should be false if only stroking but stroke is set to empty', function() {
-            hyI.setStroke(hyI._c.STYLE.EMPTY);
+            hyI.setStroke(hyI.STYLE.EMPTY);
             hyI.unsetFill();
             assert.equal(hyI._display._canDraw(), false);
         });
         test('Should be false if only filling but fill is set to empty', function() {
-            hyI.setFill(hyI._c.STYLE.EMPTY);
+            hyI.setFill(hyI.STYLE.EMPTY);
             hyI.unsetStroke();
             assert.equal(hyI._display._canDraw(), false);
         });
         test('Should be false if stroking and filling but both set to empty', function() {
-            hyI.setStroke(hyI._c.STYLE.EMPTY);
-            hyI.setFill(hyI._c.STYLE.EMPTY);
+            hyI.setStroke(hyI.STYLE.EMPTY);
+            hyI.setFill(hyI.STYLE.EMPTY);
             assert.equal(hyI._display._canDraw(), false);
         });
         test('Should be false if only checking stroke and stroke is not set', function() {
-            hyI.setStroke(hyI._c.STYLE.EMPTY);
+            hyI.setStroke(hyI.STYLE.EMPTY);
             hyI.setFill('#FF0000');
-            assert.equal(hyI._display._canDraw(hyI._c.DRAW.STROKE), false);
+            assert.equal(hyI._display._canDraw(hyI.DRAW.STROKE), false);
         });
         test('Should be false if only checking fill and fill is not set', function() {
-            hyI.setFill(hyI._c.STYLE.EMPTY);
+            hyI.setFill(hyI.STYLE.EMPTY);
             hyI.setStroke('#FF0000');
-            assert.equal(hyI._display._canDraw(hyI._c.DRAW.FILL), false);
+            assert.equal(hyI._display._canDraw(hyI.DRAW.FILL), false);
         });
         test('Should be true if only stroking and is set correctly', function() {
             hyI.setStroke('#FFFFFF');
@@ -90,7 +84,7 @@ suite('Display', function() {
         });
         test('Should be true if stroking and filling and 1 is set correctly', function() {
             hyI.setStroke('#FFFFFF');
-            hyI.setFill(hyI._c.STYLE.EMPTY);
+            hyI.setFill(hyI.STYLE.EMPTY);
             assert.equal(hyI._display._canDraw(), true);
         });
         test('Should be true if stroking and filling and both are set correctly', function() {
@@ -99,9 +93,9 @@ suite('Display', function() {
             assert.equal(hyI._display._canDraw(), true);
         });
         test('Should be true if only checking fill and fill is set', function() {
-            hyI.setStroke(hyI._c.STYLE.EMPTY);
+            hyI.setStroke(hyI.STYLE.EMPTY);
             hyI.setFill('#FF0000');
-            assert.equal(hyI._display._canDraw(hyI._c.DRAW.FILL), true);
+            assert.equal(hyI._display._canDraw(hyI.DRAW.FILL), true);
         });
     })
 });

@@ -1,4 +1,4 @@
-var hyI = new hy();
+var hyI = new hy(null, true);
 
 
 suite('Core', function() {
@@ -22,11 +22,10 @@ suite('Core', function() {
         test('_initialised should be true', function () {
             assert.isOk(hyI._initialised);
         });
-        test('Constants are loaded', function() {
-            assert.isObject(hyI._c);
-        });
+
         test('Display is an instance of hy.Display', function() {
             assert.instanceOf(hyI._display, hy.Display);
         });
+
     });
 });

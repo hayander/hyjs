@@ -16,8 +16,8 @@ hy.Display = function(hyInstance, width, height) {
     this._fill   = true;
 
     // Set default styles
-    this.setStroke(this._hy.colour(this._hy._c.DEFAULT.STROKE));
-    this.setFill(this._hy.colour(this._hy._c.DEFAULT.FILL));
+    this.setStroke(this._hy.colour(this._hy.DEFAULT.STROKE));
+    this.setFill(this._hy.colour(this._hy.DEFAULT.FILL));
 
 };
 
@@ -75,7 +75,7 @@ hy.Display.prototype.background = function(colour) {
 
 hy.Display.prototype.line = function(x1, y1, x2, y2) {
 
-    if ( !this._canDraw(this._hy._c.DRAW.STROKE) ) {
+    if ( !this._canDraw(this._hy.DRAW.STROKE) ) {
         return;
     }
 
@@ -185,7 +185,7 @@ hy.Display.prototype.setFill = function(colour) {
 };
 
 hy.Display.prototype.unsetFill = function() {
-    this._styles.fill   = this._hy._c.STYLE.EMPTY;
+    this._styles.fill   = this._hy.STYLE.EMPTY;
     this._fill          = false;
     this._ctx.fillStyle = this._styles.fill;
 };
@@ -197,7 +197,7 @@ hy.Display.prototype.setStroke = function(colour) {
 };
 
 hy.Display.prototype.unsetStroke = function() {
-    this._styles.stroke   = this._hy._c.STYLE.EMPTY;
+    this._styles.stroke   = this._hy.STYLE.EMPTY;
     this._stroke          = false;
     this._ctx.strokeStyle = this._styles.stroke;
 };
@@ -210,19 +210,19 @@ hy.Display.prototype._canDraw = function(only) {
     if ( !this._stroke && !this._fill ) {
         return false;
     } else if ( this._stroke && !this._fill ) {
-        if ( this._ctx.strokeStyle === this._hy._c.STYLE.EMPTY ) {
+        if ( this._ctx.strokeStyle === this._hy.STYLE.EMPTY ) {
             return false;
         }
     } else if ( this._fill && !this._stroke ) {
-        if ( this._ctx.fillStyle === this._hy._c.STYLE.EMPTY ) {
+        if ( this._ctx.fillStyle === this._hy.STYLE.EMPTY ) {
             return false;
         }
-    } else if ( this._ctx.strokeStyle === this._hy._c.STYLE.EMPTY ) {
-        if ( only === this._hy._c.DRAW.STROKE || this._ctx.fillStyle === this._hy._c.STYLE.EMPTY ) {
+    } else if ( this._ctx.strokeStyle === this._hy.STYLE.EMPTY ) {
+        if ( only === this._hy.DRAW.STROKE || this._ctx.fillStyle === this._hy.STYLE.EMPTY ) {
             return false;
         }
-    } else if ( this._ctx.fillStyle === this._hy._c.STYLE.EMPTY ) {
-        if ( only === this._hy._c.DRAW.FILL || this._ctx.strokeStyle === this._hy._c.STYLE.EMPTY ) {
+    } else if ( this._ctx.fillStyle === this._hy.STYLE.EMPTY ) {
+        if ( only === this._hy.DRAW.FILL || this._ctx.strokeStyle === this._hy.STYLE.EMPTY ) {
             return false;
         }
     }
