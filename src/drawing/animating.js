@@ -7,13 +7,13 @@ hy.prototype.drawRate = function(val) {
     if ( typeof(val) !== 'number' || val <= 0 ) {
         return this._drawRate;
     } else {
-        this._setKey('_drawRateTarget', val);
+        this._setKey('_targetDrawRate', val);
     }
 };
 
 hy.prototype._draw = function() {
     var currentTime  = new Date();
-    var frameRateGap = ( 1000 / this._drawRateTarget ) - 5;
+    var frameRateGap = ( 1000 / this._targetDrawRate ) - 5;
     if ( ( currentTime - this._lastDrawTime ) >= frameRateGap ) {
         this._setKey('_drawCycles', ++this._drawCycles);
         this._setKey('_drawRate', (1000 / (currentTime - this._lastDrawTime)));

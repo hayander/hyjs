@@ -12,7 +12,7 @@ module.exports = {
     DEFAULT: {
         WIDTH: 640,
         HEIGHT: 480,
-        DRAWRATE: 45,
+        DRAWRATE: 60,
         STROKE: '#000000',
         FILL: '#FFFFFF'
     },

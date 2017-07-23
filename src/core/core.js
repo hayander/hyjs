@@ -50,7 +50,7 @@ hy.prototype._initialiseDefaults    = function() {
     }, this);
 
 
-    this._drawRateTarget = this.DEFAULT.DRAWRATE;
+    this._targetDrawRate = this.DEFAULT.DRAWRATE;
     this._lastDrawTime   = new Date();
     this._drawCycles     = 0;
 
