@@ -10,9 +10,6 @@ hy.Display = function(hyInstance, width, height) {
     this._canvas = this.createCanvas(width, height);
     this._ctx    = this._canvas.getContext('2d');
 
-    this.width  = this._canvas.width;
-    this.height = this._canvas.height;
-
     this._styles = {};
 
     this._stroke = true;
@@ -54,6 +51,9 @@ hy.Display.prototype.resizeCanvas = function(canvas, width, height) {
     canvas.height       = height;
     canvas.style.width  = width + 'px';
     canvas.style.height = height + 'px';
+
+    this._hy._setKey('canvasWidth', this.width);
+    this._hy._setKey('canvasHeight', this.height);
 };
 
 hy.Display.prototype.background = function(colour) {
