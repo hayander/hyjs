@@ -5,9 +5,7 @@ var hy = require('./core');
 hy.prototype._setKey = function(key, value) {
     this[key] = value;
     if ( this._global ) {
-        if ( this._debugging || key.substr(0, 1) !== '_' ) {
-            window[key] = value;
-        }
+        window[key] = value;
         return;
     }
     return value;
@@ -18,13 +16,11 @@ hy.prototype._initialiseGlobalInstance = function() {
     // Attach hy methods to the window
     for ( var h in this ) {
         // _methods are kept private unless debugging
-        if ( this._debugging || h.substr(0, 1) !== '_' ) {
-            if ( typeof hy.prototype[h] === 'function' ) {
-                this._bindPropertyGlobally(h, this[h].bind(this));
-            }
-            else {
-                this._bindPropertyGlobally(h, this[h]);
-            }
+        if ( typeof hy.prototype[h] === 'function' ) {
+            this._bindPropertyGlobally(h, this[h].bind(this));
+        }
+        else {
+            this._bindPropertyGlobally(h, this[h]);
         }
     }
 };
