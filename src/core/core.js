@@ -21,9 +21,9 @@ var hy = function(instance, debug) {
 hy.prototype._initialise = function() {
     this.log('Initialising');
 
-    this._initialiseInstance();
     this._initialiseDefaults();
     this._initialiseCanvas();
+    this._initialiseInstance();
     this._initialiseUserDrawing();
 
     this._hyInitialised = true;
@@ -46,7 +46,7 @@ hy.prototype._initialiseDefaults    = function() {
     var constants = require('./constants');
 
     Object.keys(constants).map(function(key) {
-        this._setKey(key, constants[key]);
+        this[key] = constants[key];
     }, this);
 
 
@@ -75,9 +75,8 @@ hy.prototype._initialiseDefaults    = function() {
 hy.prototype._initialiseCanvas = function() {
 
     this._display = new hy.Display(this, this.DEFAULT.WIDTH, this.DEFAULT.HEIGHT);
-
     this._canvas = this._display._canvas;
-    this._ctx    = this._display._ctx;
+    this._ctx = this._display._ctx;
 
 };
 
