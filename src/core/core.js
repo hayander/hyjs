@@ -42,22 +42,33 @@ var hy = function(instance, debug) {
         window.addEventListener('load', this._initialise.bind(this));
     }
 
- };
-
+};
 
 hy.prototype._initialise = function() {
-
     this.log('Initialising');
 
-    this._display = new hy.Display(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
-
-    this._canvas = this._display._canvas;
-    this._ctx   = this._display._ctx;
+    this._initialiseCanvas();
+    this._initialiseInstance();
+    this._initialiseUserDrawing();
 
     this._initialised = true;
 
     this.log('HYJS is initialised');
 
+};
+
+
+hy.prototype._initialiseCanvas = function() {
+
+
+    this._display = new hy.Display(this, this._c.DEFAULT.WIDTH, this._c.DEFAULT.HEIGHT);
+
+    this._canvas = this._display._canvas;
+    this._ctx    = this._display._ctx;
+
+};
+
+hy.prototype._initialiseInstance = function() {
     if ( this._instance ) {
         this._instance.call(this);
     }
@@ -66,8 +77,29 @@ hy.prototype._initialise = function() {
         this._instance = this;
         this._initialiseGlobalInstance();
     }
+};
 
-    window.requestAnimationFrame(this._draw.bind(this));
+hy.prototype._initialiseUserDrawing = function() {
+
+    var userMethods = {
+        'init': this.drawInit || window.drawInit,
+        'frame': this.drawFrame || window.drawFrame
+    }
+
+    this._setKey('_userMethods', userMethods);
+
+    if ( this._userMethods.frame ) {
+
+        if ( this._userMethods.init ) {
+            this._userMethods.init.apply(this);
+        }
+
+        // Begins the draw loop
+        window.requestAnimationFrame(this._draw.bind(this));
+    }
+    else {
+        this.log('No draw loop defined');
+    }
 
 };
 

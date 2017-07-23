@@ -12,22 +12,19 @@ hy.prototype.drawRate = function(val) {
 };
 
 hy.prototype._draw = function() {
-    var drawFunc = this.drawFrame || window.drawFrame;
-    if ( drawFunc && typeof drawFunc === 'function' ) {
-        var currentTime  = new Date();
-        var frameRateGap = ( 1000 / this._drawRateTarget ) - 5;
-        if ( ( currentTime - this._lastDrawTime ) >= frameRateGap ) {
-            this._setKey('_drawCycles', ++this._drawCycles);
-            this._setKey('_drawRate', (1000 / (currentTime - this._lastDrawTime)));
-            this._setKey('_lastDrawTime', currentTime);
+    var currentTime  = new Date();
+    var frameRateGap = ( 1000 / this._drawRateTarget ) - 5;
+    if ( ( currentTime - this._lastDrawTime ) >= frameRateGap ) {
+        this._setKey('_drawCycles', ++this._drawCycles);
+        this._setKey('_drawRate', (1000 / (currentTime - this._lastDrawTime)));
+        this._setKey('_lastDrawTime', currentTime);
 
-            drawFunc.apply(this);
-        }
+        this._userMethods.frame.apply(this);
 
-        window.requestAnimationFrame(this._draw.bind(this));
-    } else {
-        this.log('No draw loop defined');
     }
+
+    window.requestAnimationFrame(this._draw.bind(this));
+
 };
 
 module.exports = hy;
