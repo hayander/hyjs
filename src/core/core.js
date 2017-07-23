@@ -26,17 +26,15 @@ hy.prototype._initialise = function() {
     this._initialiseCanvas();
     this._initialiseUserDrawing();
 
-    this._initialised = true;
+    this._hyInitialised = true;
 
     this.log('HYJS is initialised');
 
 };
 
 hy.prototype._initialiseInstance = function() {
-    if ( this._instance ) {
-        this._instance.call(this);
-    }
-    else {
+
+    if ( !this._instance ) {
         this._global   = true;
         this._instance = this;
         this._initialiseGlobalInstance();
@@ -44,6 +42,7 @@ hy.prototype._initialiseInstance = function() {
 };
 
 hy.prototype._initialiseDefaults    = function() {
+
     var constants = require('./constants');
 
     Object.keys(constants).map(function(key) {
@@ -75,7 +74,6 @@ hy.prototype._initialiseDefaults    = function() {
 
 hy.prototype._initialiseCanvas = function() {
 
-
     this._display = new hy.Display(this, this.DEFAULT.WIDTH, this.DEFAULT.HEIGHT);
 
     this._canvas = this._display._canvas;
@@ -85,11 +83,14 @@ hy.prototype._initialiseCanvas = function() {
 
 hy.prototype._initialiseUserDrawing = function() {
 
+    if ( this._instance && !this._global ) {
+        this._instance.call(this);
+    }
+
     var userMethods = {
         'init': this.drawInit || window.drawInit,
         'frame': this.drawFrame || window.drawFrame
     };
-
     this._setKey('_userMethods', userMethods);
 
     if ( this._userMethods.frame ) {
