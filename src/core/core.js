@@ -14,7 +14,7 @@ var hy = function(instance, debug) {
     this._instance = instance;
     this._global   = false;
 
-    this._drawRateTarget = this._c.DEFAULT.FRAMERATE;
+    this._drawRateTarget = this._c.DEFAULT.DRAWRATE;
     this._lastDrawTime   = new Date();
     this._drawCycles     = 0;
 
