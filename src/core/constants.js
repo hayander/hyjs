@@ -29,6 +29,15 @@ module.exports = {
         RADIUS: 4
     },
 
+    BASE: {
+        TOP: 'top',
+        BOTTOM: 'bottom',
+        MIDDLE: 'middle',
+        ALPHABETIC: 'alphabetic',
+        IDEOGRAPHIC: 'ideographic',
+        HANGING: 'hanging'
+    },
+
     STYLE: {
         EMPTY: 'rgba(0, 0, 0, 0)',
         NORMAL: 'normal',

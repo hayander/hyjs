@@ -206,6 +206,10 @@ hy.Display.prototype.setStrokeWidth = function(width) {
     this._ctx.lineWidth = width;
 };
 
+hy.Display.prototype.setTextBaseline = function(baseline) {
+    this._ctx.textBaseline = baseline;
+};
+
 hy.Display.prototype._canDraw = function(only) {
     if ( !this._stroke && !this._fill ) {
         return false;

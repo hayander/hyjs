@@ -32,7 +32,7 @@ hy.prototype.setStroke = function(val) {
     this._display.setStroke(colour);
 };
 
-hy.prototype.unsetStroke = function(val) {
+hy.prototype.unsetStroke = function() {
     this._display.unsetStroke();
 };
 
@@ -86,5 +86,20 @@ hy.prototype.setEllipseMode = function(mode) {
     this._modes.ellipse = ( valid ? mode : this.MODE.CENTER );
 };
 
+hy.prototype.setTextBaseline = function(baseline) {
+    var val = Object.keys(this.BASE).map(function(key) {
+        return this.BASE[key];
+    }, this);
+
+    // Set mode or default value if doesn't exist.
+    var valid = false;
+    for ( var i = 0; i < val.length; i ++ ) {
+        if ( val[i] === baseline ) {
+            valid = true;
+            break;
+        }
+    }
+    this._display.setTextBaseline( valid ? baseline : this.BASE.ALPHABETIC );
+};
 
 module.exports = hy;
