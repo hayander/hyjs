@@ -27,6 +27,56 @@ hy.prototype.text = function(text, x, y) {
     this._display.text(args);
 };
 
+hy.prototype.setTextSize = function(size) {
+    if ( typeof size === 'number' ) {
+        this._display.setTextSize(size);
+    }
+};
+
+hy.prototype.setTextStyle = function(style) {
+    if ( [this.STYLE.ITALIC, this.STYLE.OBLIQUE].indexOf(style) < 0 ) {
+        this._display.setTextStyle(this.STYLE.NORMAL);
+    } else {
+        this._display.setTextStyle(style);
+    }
+};
+
+hy.prototype.setTextVariant = function(variant) {
+    if ( [this.STYLE.SMALLCAPS].indexOf(variant) < 0 ) {
+        this._display.setTextVariant(this.STYLE.NORMAL);
+    } else {
+        this._display.setTextVariant(variant);
+    }
+};
+
+hy.prototype.setTextAlign = function(alignment) {
+    if ( [this.ALIGN.CENTER, this.ALIGN.RIGHT, this.ALIGN.START, this.ALIGN.END].indexOf(alignment) < 0 ) {
+        this._display.setTextAlign(this.ALIGN.LEFT);
+    } else {
+        this._display.setTextAlign(alignment);
+    }
+};
+
+hy.prototype.setTextFont = function(font) {
+    if ( !font || typeof font !== 'string' || font.length < 0 ) {
+        this._display.setTextFont(this.DEFAULT.TEXT);
+    } else {
+        this._display.setTextFont(font);
+    }
+};
+
+hy.prototype.setTextWeight = function(weight) {
+    if ( typeof weight === 'number' && weight >= 0 ) {
+        this._display.setTextWeight(weight);
+    } else {
+        if ( [this.STYLE.BOLD, this.STYLE.BOLDER].indexOf(weight) < 0 ) {
+            this._display.setTextWeight(this.STYLE.NORMAL);
+        } else {
+            this._display.setTextWeight(weight);
+        }
+    }
+};
+
 hy.prototype.setStroke = function(val) {
     var colour = this.colour(arguments);
     this._display.setStroke(colour);
@@ -60,7 +110,7 @@ hy.prototype.setRectMode = function(mode) {
 
     // Set mode or default value if doesn't exist.
     var valid = false;
-    for ( var i = 0; i < val.length; i ++ ) {
+    for ( var i = 0; i < val.length; i++ ) {
         if ( val[i] === mode ) {
             valid = true;
             break;
@@ -77,7 +127,7 @@ hy.prototype.setEllipseMode = function(mode) {
 
     // Set mode or default value if doesn't exist.
     var valid = false;
-    for ( var i = 0; i < val.length; i ++ ) {
+    for ( var i = 0; i < val.length; i++ ) {
         if ( val[i] === mode ) {
             valid = true;
             break;
@@ -93,13 +143,13 @@ hy.prototype.setTextBaseline = function(baseline) {
 
     // Set mode or default value if doesn't exist.
     var valid = false;
-    for ( var i = 0; i < val.length; i ++ ) {
+    for ( var i = 0; i < val.length; i++ ) {
         if ( val[i] === baseline ) {
             valid = true;
             break;
         }
     }
-    this._display.setTextBaseline( valid ? baseline : this.BASE.ALPHABETIC );
+    this._display.setTextBaseline(valid ? baseline : this.BASE.ALPHABETIC);
 };
 
 module.exports = hy;

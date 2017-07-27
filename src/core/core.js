@@ -59,15 +59,6 @@ hy.prototype._initialiseDefaults    = function() {
         ellipse: 0
     };
 
-    this._text = {
-        style: 'normal',
-        variant: 'normal',
-        weight: 'normal',
-        size: 12,
-        lineSpace: 15,
-        font: 'sans-serif'
-    };
-
     this.setRectMode();
     this.setEllipseMode();
 };

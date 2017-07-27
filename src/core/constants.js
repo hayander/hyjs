@@ -14,7 +14,12 @@ module.exports = {
         HEIGHT: 480,
         DRAWRATE: 60,
         STROKE: '#000000',
-        FILL: '#FFFFFF'
+        FILL: '#FFFFFF',
+        TEXT: {
+            SIZE: '12px',
+            LINESPACING: '15px',
+            FONT: 'Arial'
+        }
     },
 
     DRAW: {
@@ -36,6 +41,14 @@ module.exports = {
         ALPHABETIC: 'alphabetic',
         IDEOGRAPHIC: 'ideographic',
         HANGING: 'hanging'
+    },
+
+    ALIGN: {
+        LEFT: 'left',
+        RIGHT: 'right',
+        CENTER: 'center',
+        START: 'start',
+        END: 'end'
     },
 
     STYLE: {

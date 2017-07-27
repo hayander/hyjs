@@ -19,6 +19,18 @@ hy.Display = function(hyInstance, width, height) {
     this.setStroke(this._hy.colour(this._hy.DEFAULT.STROKE));
     this.setFill(this._hy.colour(this._hy.DEFAULT.FILL));
 
+    this._text = {
+        style: this._hy.STYLE.NORMAL,
+        variant: this._hy.STYLE.NORMAL,
+        weight: this._hy.STYLE.NORMAL,
+        size: this._hy.DEFAULT.TEXT.SIZE,
+        lineSpace: this._hy.DEFAULT.TEXT.LINESPACING,
+        font: this._hy.DEFAULT.TEXT.FONT
+    };
+
+    this.setInternalFont(this._text);
+
+
 };
 
 
@@ -167,6 +179,9 @@ hy.Display.prototype.text = function(args) {
         x    = args[1],
         y    = args[2];
 
+
+    console.log(this._ctx.font);
+
     if ( this._stroke ) {
         var originalWidth = this._ctx.lineWidth;
         this._ctx.lineWidth *= 2;
@@ -208,6 +223,47 @@ hy.Display.prototype.setStrokeWidth = function(width) {
 
 hy.Display.prototype.setTextBaseline = function(baseline) {
     this._ctx.textBaseline = baseline;
+};
+
+hy.Display.prototype.setTextAlign = function(alignment) {
+    this._ctx.textAlign = alignment;
+};
+
+hy.Display.prototype.setTextSize = function(size) {
+    this._text.size = size + 'px';
+    this.setInternalFont();
+};
+
+hy.Display.prototype.setTextStyle = function(style) {
+    this._text.style = style;
+    this.setInternalFont();
+};
+
+hy.Display.prototype.setTextVariant = function(variant) {
+    this._text.variant = variant;
+    this.setInternalFont();
+};
+
+hy.Display.prototype.setTextWeight = function(weight) {
+    this._text.weight = weight;
+    this.setInternalFont();
+};
+
+hy.Display.prototype.setTextFont = function(font) {
+    this._text.font = font;
+    this.setInternalFont();
+};
+
+
+hy.Display.prototype.setInternalFont = function(text) {
+    if ( !text ) {
+        text = this._text;
+    }
+    this._ctx.font = [text.style,
+        text.variant,
+        text.weight,
+        text.size,
+        text.font].join(' ');
 };
 
 hy.Display.prototype._canDraw = function(only) {
