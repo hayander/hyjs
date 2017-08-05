@@ -14,6 +14,8 @@ require('./drawing/drawing');
 require('./drawing/environment');
 require('./drawing/animating');
 
+// Math
+require('./math/random.js');
 
 // Utilities
 require('./utilities/colour/hy.Colour');
