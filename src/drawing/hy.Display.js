@@ -101,6 +101,26 @@ hy.Display.prototype.line = function(x1, y1, x2, y2) {
 
 };
 
+hy.Display.prototype.dot = function(x, y, r) {
+    if ( !this._canDraw(this._hy.DRAW.STROKE) ) {
+        return;
+    }
+
+    if ( r === undefined ) {
+        r = this._ctx.lineWidth / 2;
+    }
+
+    var currentFill = this._styles.fill;
+    this._ctx.fillStyle = this._styles.stroke;
+    this._ctx.beginPath();
+    this._ctx.arc(x, y, r, 0, this._hy.TWO_PI);
+    this._ctx.fill();
+
+    this._ctx.fillStyle = currentFill;
+
+
+};
+
 hy.Display.prototype.rect = function(args) {
 
     if ( !this._canDraw() ) {
@@ -179,8 +199,6 @@ hy.Display.prototype.text = function(args) {
         x    = args[1],
         y    = args[2];
 
-
-    console.log(this._ctx.font);
 
     if ( this._stroke ) {
         var originalWidth = this._ctx.lineWidth;

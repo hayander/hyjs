@@ -8,6 +8,10 @@ hy.prototype.background = function() {
     return this;
 };
 
+hy.prototype.dot = function(x, y, r) {
+    this._display.dot(x, y, r);
+};
+
 hy.prototype.line = function(x1, y1, x2, y2) {
     this._display.line(x1, y1, x2, y2);
 };
