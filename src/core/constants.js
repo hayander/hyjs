@@ -1,5 +1,8 @@
 'use strict';
 
+
+var PI = Math.PI;
+
 module.exports = {
 
     DEBUG: {
@@ -59,7 +62,14 @@ module.exports = {
         SMALLCAPS: 'small-caps',
         BOLD: 'bold',
         BOLDER: 'bolder'
-    }
+    },
+
+    // Math constants
+    PI: PI,
+    TWO_PI: PI * 2,
+    QUARTER_PI: PI / 4,
+    HALF_PI: PI / 2,
+    TAU: PI * 2
 
 };
 
